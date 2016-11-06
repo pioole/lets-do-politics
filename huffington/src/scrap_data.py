@@ -4,12 +4,15 @@ os.environ["DJANGO_SETTINGS_MODULE"] = "djangoormsettings"  # this must be done 
 import django
 django.setup()
 
-from src.models import Article
+from src.models import ArticleOrComment
+from src.web_crawler import WebCrawler
 
 
-#TODO actually scrap data
+crawler = WebCrawler('http://www.huffingtonpost.com/')
 
-a = Article(name='this perfect article')
-a.save()
+object_list = crawler.crawl()
 
-print Article.objects.all()
+for object_ in object_list:
+    object_.save()
+
+print ArticleOrComment.objects.all()
