@@ -4,7 +4,7 @@ os.environ["DJANGO_SETTINGS_MODULE"] = "djangoormsettings"  # this must be done 
 import django
 django.setup()
 
-from src.models import ArticleOrComment
+from src.models import Comment
 from src.web_crawler import WebCrawler
 
 
